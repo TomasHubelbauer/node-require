@@ -97,3 +97,23 @@ question there is if `index.mjs` would be resolved before `index.js` by Node.
 
 Right now `index.mjs` is not resolved even with `--experimental-modules` even in
 the absence of `index.js` so this probably remains to be seen.
+
+## Conclusion
+
+For now, I've opted to use the following pattern:
+
+```js
+module.exports = function() {
+
+};
+
+module.exports();
+```
+
+It does not introduce a level or nesting nor parentheses and it also doesn't
+really introduce a need for naming things because the `module.exports` symbol
+name is predefined, so I feel like this is a nice win-win where most of the
+feel of `void async function() {}()` remains but it is also exported so other
+processes can `require` the module. In this case it is not exported as already
+running, but that's something I wasn't particularly partial about, so that's
+okay.
