@@ -107,7 +107,7 @@ module.exports = function() {
 
 };
 
-module.exports();
+module.exports = module.exports();
 ```
 
 It does not introduce a level or nesting nor parentheses and it also doesn't
