@@ -117,3 +117,6 @@ feel of `void async function() {}()` remains but it is also exported so other
 processes can `require` the module. In this case it is not exported as already
 running, but that's something I wasn't particularly partial about, so that's
 okay.
+
+It is also important to use `chdir` to step into the required script's directory
+and back if the script should make files in its directory and not the invoker's.
