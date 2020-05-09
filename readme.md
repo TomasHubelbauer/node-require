@@ -120,3 +120,23 @@ okay.
 
 It is also important to use `chdir` to step into the required script's directory
 and back if the script should make files in its directory and not the invoker's.
+
+## Update
+
+I've settled on this:
+
+```js
+module.exports = async function () {
+
+};
+
+if (process.cwd() === __dirname) {
+  module.exports();
+}
+```
+
+Still no need to name anything, but there are benefits in that the importer can
+decide when to start running the function (it does not start running at import
+time) yet it is still possible to test it by running `node .` (assuming the code
+is in a file named `index.js`) due to the check at the end which invokes it if
+it sees the current working directory is the same as the script file's directory.
